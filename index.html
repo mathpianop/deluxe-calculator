@@ -1,9 +1,7 @@
 <html>
     <body>
         <div class="calculator">
-        <div id="display" class="display">
-           
-        </div>
+        <div id="display" class="display"></div>
         <div id="buttonContainer" class="buttonContainer">
             <div id="digitContainer" class="digitContainer">
                 <button id="one" class="digits buttons">1</button>
@@ -16,7 +14,8 @@
                 <button id="eight" class="digits buttons">8</button>
                 <button id="nine" class="digits buttons">9</button>
                 <button id="zero" class="digits buttons">0</button>
-                <button id="clear" class="digits buttons">Clear</button>
+                <button id="decimal" class="digits buttons">.</button>
+                <button id="clear" class="digits buttons">C</button>
             </div>
             <div id="operationContainer" class="operationContainer">
                 <button id="add" class="operator buttons">+</button>
@@ -42,8 +41,11 @@
         padding: 5px;
         padding-right: 0px;
         border-style: solid; 
-        border-width: 2px;
+        border-width: 0px;
         border-radius: 4%;
+        background-color: lightgray;
+        box-shadow: 5px 5px 20px;
+    
        
     }
 
@@ -56,6 +58,7 @@
         margin-bottom: 4px;
         font-size: 20px;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
+        background-color: white;
     }
    .buttonContainer {
     
@@ -92,10 +95,7 @@
         background-color: green;
     }
 
-    #clear {
-        background-color: buttonface;
-    }
-
+   
 .operator {
     
   height: 40px;
@@ -106,12 +106,7 @@
 }
 
 
-    #clear {
-        width: 84px;
-        color: black;
-        background-color: lightgray;
-    }
-
+  
 #equals {
   height: 40px;
   width: 174px;
@@ -124,10 +119,27 @@
 </style>
 
 <script>
-    const add = (a,b) => {return a+b;}
-    const subtract = (a,b) => {return a-b;}
-    const multiply = (a,b) => {return a*b;}
-    const divide = (a,b) => {return a/b;}
+    const add = (runningAnswer, x) => {
+        runningAnswer += x;
+        return runningAnswer;
+        }
+    const subtract = (runningAnswer, x) => {
+        runningAnswer -= x;
+        return runningAnswer;
+        }
+    const multiply = (runningAnswer, x) => {
+        runningAnswer *= x;
+        return runningAnswer;
+        }
+    const divide = (runningAnswer,x) => {
+        if (x=0) {
+            alert("Division by 0 is not allowed!!");
+        }
+        else {
+            runningAnswer /= b;
+            return runningAnswer;
+        }
+    }
 
     function operate(a,b,operator) {
     return operator(a,b);
@@ -135,12 +147,15 @@
 
 
     const display = document.querySelector("#display");
-    let displayValue = "0"
+    let displayValue = 0;
     display.textContent = displayValue;
+
+    
     
 
     function displayNumber(number) {
-        displayValue = number;
+        displayValue *= 10;
+        displayValue += number;
         display.textContent = displayValue;
     }
 
@@ -197,6 +212,25 @@
         displayNumber(0);
     }); 
 
+    const clear = document.querySelector("#clear");
+    clear.addEventListener("click", function() {
+        runningAnswer = 0;
+        displayValue = 0;
+        display.textContent = displayValue;
+    });
 
 
+/* 
+
+operator buttons: takes displayValue, removes the last digit (identity placeholder), 
+concats into displayVAlue into outputStore, 
+and concats the operator symbol, plus identity
+
+equals sign: invokes */
 </script>
+
+
+
+
+
+
