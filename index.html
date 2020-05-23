@@ -1,0 +1,136 @@
+<html>
+    <body>
+        <div class="calculator">
+        <div id="display" class="display">
+            11235813213455
+        </div>
+        <div id="buttonContainer" class="buttonContainer">
+            <div id="digitContainer" class="digitContainer">
+                <button id="1" class="digits buttons">1</button>
+                <button id="2" class="digits buttons">2</button>
+                <button id="3" class="digits buttons">3</button>
+                <button id="4" class="digits buttons">4</button>
+                <button id="5" class="digits buttons">5</button>
+                <button id="6" class="digits buttons">6</button>
+                <button id='7' class="digits buttons">7</button>
+                <button id="8" class="digits buttons">8</button>
+                <button id="9" class="digits buttons">9</button>
+                <button id="0" class="digits buttons">0</button>
+                <button id="clear" class="digits buttons">Clear</button>
+            </div>
+            <div id="operationContainer" class="operationContainer">
+                <button id="add" class="operator buttons">+</button>
+                <button id="subtract" class="operator buttons">-</button>
+                <button id="multiply" class="operator buttons">x</button>
+                <button id="divide" class="operator buttons">÷</button>
+            </div>
+            <button id="equals" class="buttons">=</button>
+        </div>
+        </div>
+    </body>
+</html>
+    
+<style>
+
+    .calculator {
+       
+
+        margin:auto;
+        position: relative;
+        width: 180px;
+        top: 100px;
+        padding: 5px;
+        padding-right: 0px;
+        border-style: solid; 
+        border-width: 2px;
+        border-radius: 4%;
+       
+    }
+
+    .display {
+        border-style: solid ;
+        border-width: 2px;
+        border-color: gray;
+        width: 170;
+        text-align: right;
+        margin-bottom: 4px;
+        font-size: 20px;
+    }
+   .buttonContainer {
+    
+      width: 170px;
+    cursor: pointer;
+
+    }
+
+    .buttons {
+        cursor: pointer;
+        color: white;
+        font-size: 16px;
+    }
+
+.digitContainer {
+    
+  display: inline-block;
+   width: 130px;
+   margin-right: 4px;
+   
+}
+
+.operationContainer {
+    position: absolute;
+  display: inline-block;
+  width: 40px;
+}
+
+
+    .digits {
+        height: 40px;
+        width: 40px;
+        margin-bottom: 4px;
+        background-color: green;
+    }
+
+    #clear {
+        background-color: buttonface;
+    }
+
+.operator {
+    
+  height: 40px;
+  width: 40px;
+  margin-bottom: 4px;
+  background-color: rgb(29, 189, 29);
+  
+}
+
+
+    #clear {
+        width: 84px;
+        color: black;
+        background-color: lightgray;
+    }
+
+#equals {
+  height: 40px;
+  width: 174px;
+  margin-top: 4px;
+
+  background-color: rgb(36, 88, 231);
+}
+    
+
+</style>
+
+<script>
+    const add = (a,b) => {return a+b;}
+    const subtract = (a,b) => {return a-b;}
+    const multiply = (a,b) => {return a*b;}
+    const divide = (a,b) => {return a/b;}
+
+    function operate(a,b,operator) {
+    return operator(a,b);
+    }
+
+
+</script>
