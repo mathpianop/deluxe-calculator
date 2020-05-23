@@ -2,20 +2,20 @@
     <body>
         <div class="calculator">
         <div id="display" class="display">
-            11235813213455
+           
         </div>
         <div id="buttonContainer" class="buttonContainer">
             <div id="digitContainer" class="digitContainer">
-                <button id="1" class="digits buttons">1</button>
-                <button id="2" class="digits buttons">2</button>
-                <button id="3" class="digits buttons">3</button>
-                <button id="4" class="digits buttons">4</button>
-                <button id="5" class="digits buttons">5</button>
-                <button id="6" class="digits buttons">6</button>
-                <button id='7' class="digits buttons">7</button>
-                <button id="8" class="digits buttons">8</button>
-                <button id="9" class="digits buttons">9</button>
-                <button id="0" class="digits buttons">0</button>
+                <button id="one" class="digits buttons">1</button>
+                <button id="two" class="digits buttons">2</button>
+                <button id="three" class="digits buttons">3</button>
+                <button id="four" class="digits buttons">4</button>
+                <button id="five" class="digits buttons">5</button>
+                <button id="six" class="digits buttons">6</button>
+                <button id='seven' class="digits buttons">7</button>
+                <button id="eight" class="digits buttons">8</button>
+                <button id="nine" class="digits buttons">9</button>
+                <button id="zero" class="digits buttons">0</button>
                 <button id="clear" class="digits buttons">Clear</button>
             </div>
             <div id="operationContainer" class="operationContainer">
@@ -55,6 +55,7 @@
         text-align: right;
         margin-bottom: 4px;
         font-size: 20px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
     }
    .buttonContainer {
     
@@ -131,6 +132,71 @@
     function operate(a,b,operator) {
     return operator(a,b);
     }
+
+
+    const display = document.querySelector("#display");
+    let displayValue = "0"
+    display.textContent = displayValue;
+    
+
+    function displayNumber(number) {
+        displayValue = number;
+        display.textContent = displayValue;
+    }
+
+    
+   const btn1 = document.querySelector("#one");
+    btn1.addEventListener("click", function() {
+        displayNumber(1)
+    });
+
+
+
+    const btn2 = document.querySelector("#two");
+    btn2.addEventListener("click", function() {
+        displayNumber(2)
+    });
+
+    const btn3 = document.querySelector("#three");
+   btn3.addEventListener("click", function() {
+        displayNumber(3)
+    });
+
+    const btn4 = document.querySelector("#four");
+    btn4.addEventListener("click", function() {
+        displayNumber(4)
+    });
+
+    const btn5 = document.querySelector("#five");
+   btn5.addEventListener("click", function() {
+        displayNumber(5)
+    });
+
+    const btn6 = document.querySelector("#six");
+    btn6.addEventListener("click", function() {
+        displayNumber(6)
+    });
+
+    const btn7 = document.querySelector("#seven");
+    btn7.addEventListener("click", function() {
+        displayNumber(7)
+    });
+
+    const btn8 = document.querySelector("#eight");
+  btn8.addEventListener("click", function() {
+        displayNumber(8)
+    });
+
+    const btn9 = document.querySelector("#nine");
+    btn9.addEventListener("click", function() {
+        displayNumber(9)
+    });
+
+    const btn0 = document.querySelector("#zero");
+    btn0.addEventListener("click", function() {
+        displayNumber(0);
+    }); 
+
 
 
 </script>
