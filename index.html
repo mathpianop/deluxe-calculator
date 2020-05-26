@@ -124,6 +124,7 @@
     let operatorValue = "";
     let answerGiven = false;
     let postOperator = false;
+    let decimalPoint = false;
 
     const display = document.querySelector("#display");
     let displayValue = 0;
@@ -154,10 +155,26 @@
 
   
     function displayNumber(number) {
+        if (decimalPoint === false) {
         displayValue *= 10;
         displayValue += number;
+        }
+        else {
+
+        let countDecimals = function(value) {
+        if (Math.floor(value) !== value)
+        return value.toString().split(".")[1].length || 0;
+         return 0;
+        }
+        
+
+        let decimalAddition = number*Math.pow(10,(-1*countDecimals(displayValue) - 1));
+        console.log(decimalAddition);
+        displayValue += decimalAddition;
+        
+        }
         display.textContent = displayValue;
-         }
+    }
 
     function clearInfo() {
         runningAnswer = 0;
@@ -165,6 +182,7 @@
              operatorValue = "";
              answerGiven = false;
              postOperator = false;
+             decimalPoint = false;
          }
    
 
@@ -173,12 +191,18 @@
             
             displayValue = 0;
             postOperator = true;
-            console.log("option1");
         }
         else if (operatorValue === "" && answerGiven === true) {
            clearInfo();
         }
         displayNumber(digit);
+    }
+
+    function decimalAction() {
+        if (operatorValue !== "") {
+            displayValue = 0;
+        }
+        decimalPoint = true;
     }
 
     function operatorAction(operator) {
@@ -192,57 +216,108 @@
         }
         operatorValue = operator;
         postOperator = false;
+        decimalPoint = false;
     }
+
+    function equalsAction() {
+        operate(displayValue, operatorValue);
+            operatorValue = "";
+            let runningString = `${runningAnswer}`;
+        if (runningAnswer>10000000000000) {
+            display.textContent="TOO LARGE";
+            console.log("This, maybe?")
+        }
+        else if (runningString.length>13 && runningAnswer<10000000000000) {
+            display.textContent=runningString.slice(0,13);
+        }
+        else {
+            displayValue = runningAnswer;
+            display.textContent = displayValue;
+        }
+            answerGiven = true;
+            decimalPoint = false;
+    }
+
+
+    function activateKeys(e) {
+        if(e.keyCode>47 && e.keyCode<58) {
+        digitAction(e.keyCode - 48);
+        }
+
+        if(e.keyCode === 190) {
+            decimalAction();
+        }
+
+       if(e.keyCode === 13) {
+            equalsAction();
+       }
+    };
+
+
+    document.addEventListener("keypress", activateKeys);
     
    const btn1 = document.querySelector("#one");
     btn1.addEventListener("click", function() {
        digitAction(1);
     });
 
-
     const btn2 = document.querySelector("#two");
     btn2.addEventListener("click", function() {
         digitAction(2);
     });
+    
+    
 
     const btn3 = document.querySelector("#three");
    btn3.addEventListener("click", function() {
     digitAction(3);
     });
+  
 
     const btn4 = document.querySelector("#four");
     btn4.addEventListener("click", function() {
        digitAction(4);
     });
+   
 
     const btn5 = document.querySelector("#five");
    btn5.addEventListener("click", function() {
     digitAction(5);
     });
+  
 
     const btn6 = document.querySelector("#six");
     btn6.addEventListener("click", function() {
         digitAction(6);
     });
+   
 
     const btn7 = document.querySelector("#seven");
     btn7.addEventListener("click", function() {
        digitAction(7);
     });
+  
 
     const btn8 = document.querySelector("#eight");
   btn8.addEventListener("click", function() {
    digitAction(8);
     });
 
+
     const btn9 = document.querySelector("#nine");
     btn9.addEventListener("click", function() {
         digitAction(9);
     });
+    
 
     const btn0 = document.querySelector("#zero");
     btn0.addEventListener("click", function() {
         digitAction(0);
+    });
+  
+    const decimal = document.querySelector("#decimal");
+    decimal.addEventListener("click", function() {
+        decimalAction();
     }); 
 
     const clear = document.querySelector("#clear");
@@ -272,36 +347,10 @@
     });
 
     const equals = document.querySelector("#equals");
-    equals.addEventListener("click", function() {
-        
-        operate(displayValue, operatorValue);
-            operatorValue = "";
-            let runningString = `${runningAnswer}`;
-        if (runningAnswer>10000000000000) {
-            display.textContent="TOO LARGE";
-            console.log("This, maybe?")
-        }
-        else if (runningString.length>13 && runningAnswer<10000000000000) {
-            display.textContent=runningString.slice(0,13);
-            console.log("This, instead")
-            console.log(runningString);
-        }
-        else {
-            console.log("This");
-            displayValue = runningAnswer;
-            display.textContent = displayValue;
-        }
-            answerGiven = true;
-    });
+    equals.addEventListener("click", equalsAction);
 
 
-/* 
 
-operator buttons: takes displayValue, removes the last digit (identity placeholder), 
-concats into displayVAlue into outputStore, 
-and concats the operator symbol, plus identity
-
-equals sign: invokes */
 </script>
 
 

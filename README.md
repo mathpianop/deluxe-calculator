@@ -7,6 +7,7 @@ for an additional operation.
 
 --5/25 9:24 Problem: If Ido an operation, and then try to enter a new number, it doesn't clear. Add something to digitAction() function. Then, deal with decimals 'n' such
 
+--5/26 9:50 Problems with floats: It overflows the screen (my truncate code only applies to the equals button right now).
+Also, I can't enter something like .08
 
---End Tasks: Make it so that the chain of numbers appears on the screen
-Use Order of operations
+ALSO IMPORTANT: Hitting Equals too early causes problems!!!
