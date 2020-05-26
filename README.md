@@ -11,3 +11,5 @@ for an additional operation.
 Also, I can't enter something like .08
 
 ALSO IMPORTANT: Hitting Equals too early causes problems!!!
+
+End Task: Add Backspace KEY function. Add keyboard function for decimal point

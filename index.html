@@ -251,6 +251,27 @@
        if(e.keyCode === 13) {
             equalsAction();
        }
+
+       if (e.key === "+") {
+           operatorAction("add");
+       }
+
+       if (e.key === "-") {
+           operatorAction("subtract");
+       }
+
+       if (e.key === "*") {
+           operatorAction("multiply");
+       }
+
+       if (e.key === "/") {
+           operatorAction("divide");
+       }
+
+       if (e.key === "c") {
+        clearInfo();
+        display.textContent = displayValue;
+       }
     };
 
 
